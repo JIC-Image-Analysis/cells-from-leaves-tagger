@@ -125,6 +125,7 @@ app.on('ready', function() {
         for(var i = 0; i < imageSets.length; i++) {
             var f = fs.openSync(imageSets[i].jsonFilename, "w");
             fs.writeSync(f, JSON.stringify(imageSets[i].metadata, null, '\t'));
+            fs.closeSync(f);
         }
 
         updateStatus('Saved');
