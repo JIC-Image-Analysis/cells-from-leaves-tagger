@@ -22,3 +22,4 @@
 
 * Edit main.js and change images_dir to point to a directory containing images.
 * Run ``npm start``
+* *Warning:* ``sudo npm start`` is required if the initial processing was done using Docker
