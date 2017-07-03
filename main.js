@@ -13,6 +13,7 @@ var mainWindow = null;
 
 var ImageSet = function() {};
 var imageSets = [];
+var largeStepSize = 1;
 
 var generateImagePathArrays = function(imagesDir, keywords) {
     /* Load files from a directory. The keywords are used to split the files
@@ -198,6 +199,22 @@ app.on('ready', function() {
         };
     };
 
+    var fastForward = function () {
+	currentFile = currentFile + largeStepSize;
+        if (currentFile > imageSets.length) {
+            currentFile = imageSets.length - 1;
+        };
+        showCurrentImageSet();
+    };
+
+    var rewind = function () {
+	currentFile = currentFile - largeStepSize;
+        if (currentFile < 0) {
+            currentFile = 0;
+        };
+        showCurrentImageSet();
+    };
+
     var toggleHelp = function() {
         mainWindow.webContents.send('toggle-help', {});
     }
@@ -220,6 +237,9 @@ app.on('ready', function() {
     globalShortcut.register('h', prevFile);
     globalShortcut.register('Left', prevFile);
 
+    globalShortcut.register('f', fastForward);
+    globalShortcut.register('r', rewind);
+
     globalShortcut.register('s', saveImageSetData);
 
     globalShortcut.register('q', quitImageTagger);
@@ -229,6 +249,7 @@ app.on('ready', function() {
         var dir = dialog.showOpenDialog({properties: ['openDirectory']});
 
         imageSets = loadImagesetsFromDirectory(dir[0]);
+        largeStepSize = Math.floor(imageSets.length / 10)
 
         //mainWindow.webContents.send('set-clickFunctions');
 

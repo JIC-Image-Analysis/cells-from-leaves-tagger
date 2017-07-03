@@ -9,6 +9,8 @@
 | Tag as "bad"   | ``2`` |
 | Next image     | ``RightArrow``, ``l`` |
 | Previous image | ``LeftArrow``, ``h`` |
+| Fast forward   | ``f`` |
+| Rewind         | ``r`` |
 | Toggle help    | ``h`` |
 | Save           | ``s`` |
 | Quit           | ``Esc``, ``q`` |
