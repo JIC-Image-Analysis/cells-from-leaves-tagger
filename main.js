@@ -19,7 +19,9 @@ var generateImagePathArrays = function(imagesDir, keywords) {
     /* Load files from a directory. The keywords are used to split the files
     up into different arrays. The function returns three arrays. */
 
-    var files = fs.readdirSync(imagesDir);
+    /* Explicit sorting required for Windows compatibility.
+    https://github.com/nodejs/node/issues/3232 */
+    var files = fs.readdirSync(imagesDir).sort();
 
     var nKeywords = keywords.length
 
