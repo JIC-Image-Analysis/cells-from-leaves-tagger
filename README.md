@@ -1,5 +1,9 @@
 # Image tagging
 
+This annotation tool is used to post process data generated using the
+[cells-from-leaves](https://github.com/JIC-Image-Analysis/cells-from-leaves)
+image analysis.
+
 ## Key bindings
 
 | Action         | Key   |
